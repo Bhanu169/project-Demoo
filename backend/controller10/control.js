@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt"
+import bcrypt from "bcryptjs"
 import userSchema from "../model10/userSchema.js"
 import jwt from "jsonwebtoken"
 import tokens from "../tokenGen10/token.js"
