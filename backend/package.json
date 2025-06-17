@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npm rebuild bcrypt",
-    "start": "node server10.js"
+    "start": "nodemon server10.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
