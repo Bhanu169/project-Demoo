@@ -13,6 +13,8 @@ function UserTable() {
   // const getToken=sessionStorage.getItem("userInfo")
   // const token=getToken?JSON.parse(getToken):null
   // console.log(token,"token")
+
+
   const getToken = cookie.get("userInfo")
   const token = getToken ? JSON.parse(getToken) : null
   console.log(token, "token")
@@ -46,32 +48,27 @@ function UserTable() {
     navigate(`/UserEdit/${id}`)
   }
 
-  const deleteUserrrData = async(id) => {
+  const deleteUserrrData = async (id) => {
     try {
-      // console.log(id, "id")
-      
-
-
-
-Swal.fire({
-  title: "Are you sure?",
-  text: "You won't be able to revert this!",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#3085d6",
-  cancelButtonColor: "#d33",
-  confirmButtonText: "Yes, delete it!"
-}).then(async(result) => {
-  if (result.isConfirmed) {
-    const dataa=await axios.delete(`http://localhost:6942/user/deleteUserrr/${id}`)
-      getData()
-    Swal.fire({
-      title: "Deleted!",
-      text: "Your file has been deleted.",
-      icon: "success"
-    });
-  }
-});
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const dataa = await axios.delete(`http://localhost:6942/user/deleteUserrr/${id}`)
+          getData()
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success"
+          });
+        }
+      });
 
     } catch (error) {
       console.log(error)
@@ -113,7 +110,11 @@ Swal.fire({
                   </td>
                 </tr>
               ))}
-              {/* Add more rows as needed */}
+             {data.length === 0 && (
+              <tr>
+                <td colSpan="7" className="text-center text-muted py-4">No User found.</td>
+              </tr>
+            )}
             </tbody>
           </table>
         </div>

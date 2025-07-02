@@ -7,11 +7,11 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "build": "npm rebuild bcrypt",
     "start": "node server10.js",
     "dev": "nodemon server10.js"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",

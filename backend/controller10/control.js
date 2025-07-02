@@ -1,4 +1,4 @@
-import bcrypt from "bcryptjs"
+import bcrypt from "bcrypt"
 import userSchema from "../model10/userSchema.js"
 import jwt from "jsonwebtoken"
 import tokens from "../tokenGen10/token.js"
@@ -87,6 +87,7 @@ export const findUserAll=async(req,res)=>{
     try {
         const userData= await userSchema.find()
         return res.json(userData)
+        
     } catch (error) {
         console.log(error)
     }
@@ -116,7 +117,7 @@ export const deleteUserrr=async (req,res)=>{
     try {
         const dataa=await userSchema.findByIdAndDelete({_id:req.params.id})
                 return res.json({
-                    message:"Usewr Deleted successfully"
+                    message:"User Deleted successfully"
                 })
 
     } catch (error) {

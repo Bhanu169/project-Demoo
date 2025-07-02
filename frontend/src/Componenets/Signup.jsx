@@ -1,8 +1,242 @@
+// import React, { useState } from 'react'
+// import '../sign.css'
+
+// // change
+// import axios from "axios"
+// import { toast } from 'react-toastify'
+// import { useNavigate } from 'react-router-dom'
+// // change
+
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import {
+//   faUserPlus,
+// } from '@fortawesome/free-solid-svg-icons'
+// import {
+//   faGooglePlusG,
+//   faFacebookF,
+//   faGithub,
+//   faLinkedinIn,
+// } from '@fortawesome/free-brands-svg-icons';
+
+// function Sign() {
+//     // change
+//     // const navigate=useNavigate()
+//   const [formData, setFormData] = useState("")
+//   const handleInputChange = (e) => {
+//     console.log(e.target)
+//     setFormData({ ...formData, [e.target.name]: e.target.value })
+//   }
+//   const handleInputSubmit = async (e) => {
+//     try {
+//       e.preventDefault()
+//       const log = await axios.post(`http://localhost:6942/user/signUp`, formData)
+//       console.log(log)
+
+//       if (log.data.status !== 200) {
+//         toast.error(log.data.message)
+//       }
+//       else {
+//         setData(log.data.body)
+//         toast.success(log.data.message)
+//         // navigate("/Login")
+//       }
+
+
+//     } catch (error) {
+//       console.log(error)
+//     }
+//   }
+
+// const navigate=useNavigate()
+//   const [data, setData] = useState("")
+//   const handleChange = (e) => {
+//     console.log(e.target)
+//     setData({ ...data, [e.target.name]: e.target.value })
+//   }
+//   const handleSubmit = async (e) => {
+//     try {
+//       e.preventDefault()
+//       const log = await axios.post(`http://localhost:6942/user/logIn`, data)
+//       console.log(log)
+
+//       if (log.data.status !== 200) {
+//         toast.error(log.data.message)
+//       }
+//       else {
+//         setData(log.data.body)
+//         toast.success(log.data.message)
+//         navigate("/")
+//       }
+//     } catch (error) {
+//       console.log(error)
+//     }
+//   }
+//     // change
+//   const [isActive, setIsActive] = useState(false)
+
+//   return (
+//      <div className="signup-wrapper">
+//       <div className={`signup-container ${isActive ? 'active' : ''}`} id="signup-container">
+//       <div className="form-signup-container sign-up">
+
+//         <form onChange={handleInputChange} onSubmit={handleInputSubmit}>
+//           <h1>Create Account</h1>
+//           <div className="social-icons">
+//             <a href="#" className="icon">
+//               <FontAwesomeIcon icon={faUserPlus} />
+//             </a>
+//             <a href="#" className="icon">
+//               <FontAwesomeIcon icon={faFacebookF} />
+//             </a>
+//             <a href="#" className="icon">
+//               <FontAwesomeIcon icon={faGithub} />
+//             </a>
+//             <a href="#" className="icon">
+//               <FontAwesomeIcon icon={faLinkedinIn} />
+//             </a>
+//           </div>
+//           <span>or use your email for registration</span>
+//           <input type="text" name="name" placeholder="Name" />
+//           <input type="email" name="email" placeholder="Email" />
+//           <input type="password" name="password" placeholder="Password" />
+//           <button>Sign Up</button>
+//         </form>
+//       </div>
+
+//       <div className="form-signup-container sign-in">
+//         <form onChange={handleChange} onSubmit={handleSubmit}>
+//           <h1>Sign In</h1>
+//           <div className="social-icons">
+//             <a href="#" className="icon">
+//               <FontAwesomeIcon icon={faGooglePlusG} />
+//             </a>
+//             <a href="#" className="icon">
+//               <FontAwesomeIcon icon={faFacebookF} />
+//             </a>
+//             <a href="#" className="icon">
+//               <FontAwesomeIcon icon={faGithub} />
+//             </a>
+//             <a href="#" className="icon">
+//               <FontAwesomeIcon icon={faLinkedinIn} />
+//             </a>
+//           </div>
+//           <span>or use your email and password</span>
+//           <input
+//   type="email"
+//   name="email"
+//   placeholder="Email"
+//   onChange={handleChange}
+// />
+// <input
+//   type="password"
+//   name="password"
+//   placeholder="Password"
+//   onChange={handleChange}
+// />
+//           <a href="#">Forget Your Password?</a>
+//           <button>Sign In</button>
+//         </form>
+//       </div>
+
+//       <div className="toggle-signup-container">
+//         <div className="toggle">
+//           <div className="toggle-panel toggle-left">
+//             <h1>Welcome Back!</h1>
+//             <p>Enter your personal details to use all of site features</p>
+//             <button
+//               className="hidden"
+//               // id="login"
+//               onClick={() => setIsActive(false)}
+//             >
+//               Sign In
+//             </button>
+//           </div>
+//           <div className="toggle-panel toggle-right">
+//             <h1>Hello, Friend!</h1>
+//             <p>Register with your personal details to use all of site features</p>
+//             <button
+//               className="hidden"
+//               id="register"
+//               onClick={() => setIsActive(true)}
+//             >
+//               Sign Up
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//      </div>
+//   )
+// }
+
+// export default Sign
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState } from 'react'
+import '../sign.css'
+
+// change
 import axios from "axios"
 import { toast } from 'react-toastify'
-import { Link, useNavigate } from 'react-router-dom'
-function Signup() {
+import { useNavigate } from 'react-router-dom'
+// change
+import cookie from "js-cookie"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faUserPlus,
+} from '@fortawesome/free-solid-svg-icons'
+import {
+  faGooglePlusG,
+  faFacebookF,
+  faGithub,
+  faLinkedinIn,
+} from '@fortawesome/free-brands-svg-icons';
+
+function Sign() {
+    // change
+    // const navigate=useNavigate()
+  const [formData, setFormData] = useState("")
+  const handleInputChange = (e) => {
+    console.log(e.target)
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+  const handleInputSubmit = async (e) => {
+    try {
+      e.preventDefault()
+      const log = await axios.post(`http://localhost:6942/user/signUp`, formData)
+      console.log(log)
+
+      if (log.data.status !== 200) {
+        toast.error(log.data.message)
+      }
+      else {
+        setData(log.data.body)
+        toast.success(log.data.message)
+              setIsActive(false); // 👈 Switch to Sign In panel
+        // navigate("/Login")
+      }
+
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 const navigate=useNavigate()
   const [data, setData] = useState("")
   const handleChange = (e) => {
@@ -12,8 +246,8 @@ const navigate=useNavigate()
   const handleSubmit = async (e) => {
     try {
       e.preventDefault()
-      const log = await axios.post(`http://localhost:6942/user/signUp`, data)
-      // console.log(log)
+      const log = await axios.post(`http://localhost:6942/user/logIn`, data)
+      console.log(log)
 
       if (log.data.status !== 200) {
         toast.error(log.data.message)
@@ -21,282 +255,110 @@ const navigate=useNavigate()
       else {
         setData(log.data.body)
         toast.success(log.data.message)
-        navigate("/Login")
+        cookie.set("userInfo",JSON.stringify(log.data.body))
+        navigate("/")
       }
-
-
     } catch (error) {
       console.log(error)
     }
   }
+    // change
+  const [isActive, setIsActive] = useState(false)
 
   return (
-    <>
-      <div className="container d-flex justify-content-center">
-        <div className="w-100" style={{ maxWidth: '500px' }}>
-          {/* Pills navs */}
-          <br />
-          <ul className="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-            <li className="nav-item" role="presentation">
-              <Link to={"/Signup"}>
-                <a
-                  className="nav-link active"
-                  id="tab-login"
-                  data-mdb-pill-init=""
-                  href="#pills-login"
-                  role="tab"
-                  aria-controls="pills-login"
-                  aria-selected="true"
-                >
-                  Sign Up
-                </a>
-              </Link>
-            </li>
-            <li className="nav-item" role="presentation">
-              <Link to={"/Login"}><a
-                className="nav-link"
-                id="tab-register"
-                data-mdb-pill-init=""
-                href="#pills-register"
-                role="tab"
-                aria-controls="pills-register"
-                aria-selected="false"
-              >
-                Log In
-              </a></Link>
-            </li>
-          </ul>
-          {/* Pills navs */}
-          {/* Pills content */}
-          <div className="tab-content">
-            <div
-              className="tab-pane fade show active"
-              id="pills-login"
-              role="tabpanel"
-              aria-labelledby="tab-login"
-            >
-              <form onChange={handleChange} onSubmit={handleSubmit}>
-                <div className="text-center mb-3">
-                  <p>Sign in with:</p>
-                  <button
-                    type="button"
-                    data-mdb-button-init=""
-                    data-mdb-ripple-init=""
-                    className="btn btn-link btn-floating mx-1"
-                  >
-                    <i className="fab fa-facebook-f" />
-                  </button>
-                  <button
-                    type="button"
-                    data-mdb-button-init=""
-                    data-mdb-ripple-init=""
-                    className="btn btn-link btn-floating mx-1"
-                  >
-                    <i className="fab fa-google" />
-                  </button>
-                  <button
-                    type="button"
-                    data-mdb-button-init=""
-                    data-mdb-ripple-init=""
-                    className="btn btn-link btn-floating mx-1"
-                  >
-                    <i className="fab fa-twitter" />
-                  </button>
-                  <button
-                    type="button"
-                    data-mdb-button-init=""
-                    data-mdb-ripple-init=""
-                    className="btn btn-link btn-floating mx-1"
-                  >
-                    <i className="fab fa-github" />
-                  </button>
-                </div>
-                <p className="text-center">or:</p>
-                {/* Email input */}
-                <div data-mdb-input-init="" className="form-outline mb-4">
-                  <input type="text" name="name" id="loginName" className="form-control" />
-                  <label className="form-label" htmlFor="loginName">
-                    Name
-                  </label>
-                </div>
-                <div data-mdb-input-init="" className="form-outline mb-4">
-                  <input type="email" name="email" id="loginName" className="form-control" />
-                  <label className="form-label" htmlFor="loginName">
-                    Email
-                  </label>
-                </div>
-                {/* Password input */}
-                <div data-mdb-input-init="" className="form-outline mb-4">
-                  <input type="password" name="password" id="loginPassword" className="form-control" />
-                  <label className="form-label" htmlFor="loginPassword">
-                    Password
-                  </label>
-                </div>
-                <div data-mdb-input-init="" className="form-outline mb-4">
-                  <input type="number" name="phone" id="loginPassword" className="form-control" />
-                  <label className="form-label" htmlFor="loginPassword">
-                    Phone
-                  </label>
-                </div>
-                {/* 2 column grid layout */}
-                <div className="row mb-4">
-                  <div className="col-md-6 d-flex justify-content-center">
-                    {/* Checkbox */}
-                    <div className="form-check mb-3 mb-md-0">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        defaultValue=""
-                        id="loginCheck"
-                        defaultChecked=""
-                      />
-                      <label className="form-check-label" htmlFor="loginCheck">
-                        {" "}
-                        Remember me{" "}
-                      </label>
-                    </div>
-                  </div>
-                  <div className="col-md-6 d-flex justify-content-center">
-                    {/* Simple link */}
-                    {/* <a href="#!">Forgot password?</a> */}
-                  </div>
-                </div>
-                {/* Submit button */}
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                  <button
-                    type="submit"
-                    className="btn btn-primary btn-block mb-4"
-                  >
-                    Sign in
-                  </button>
-                </div>
+     <div className="signup-wrapper">
+      <div className={`signup-container ${isActive ? 'active' : ''}`} id="signup-container">
+      <div className="form-signup-container sign-up">
 
-                {/* Register buttons */}
-                <div className="text-center">
-                  <p>
-                    {/* Not a member? <a href="#!">Register</a> */}
-                  </p>
-                </div>
-              </form>
-            </div>
-            <div
-              className="tab-pane fade"
-              id="pills-register"
-              role="tabpanel"
-              aria-labelledby="tab-register"
-            >
-              <form>
-                <div className="text-center mb-3">
-                  <p>Sign up with lol:</p>
-                  <button
-                    type="button"
-                    data-mdb-button-init=""
-                    data-mdb-ripple-init=""
-                    className="btn btn-link btn-floating mx-1"
-                  >
-                    <i className="fab fa-facebook-f" />
-                  </button>
-                  <button
-                    type="button"
-                    data-mdb-button-init=""
-                    data-mdb-ripple-init=""
-                    className="btn btn-link btn-floating mx-1"
-                  >
-                    <i className="fab fa-google" />
-                  </button>
-                  <button
-                    type="button"
-                    data-mdb-button-init=""
-                    data-mdb-ripple-init=""
-                    className="btn btn-link btn-floating mx-1"
-                  >
-                    <i className="fab fa-twitter" />
-                  </button>
-                  <button
-                    type="button"
-                    data-mdb-button-init=""
-                    data-mdb-ripple-init=""
-                    className="btn btn-link btn-floating mx-1"
-                  >
-                    <i className="fab fa-github" />
-                  </button>
-                </div>
-                <p className="text-center">or:</p>
-                {/* Name input */}
-                <div data-mdb-input-init="" className="form-outline mb-4">
-                  <input type="text" id="registerName" className="form-control" />
-                  <label className="form-label" htmlFor="registerName">
-                    Name
-                  </label>
-                </div>
-                {/* Username input */}
-                <div data-mdb-input-init="" className="form-outline mb-4">
-                  <input type="text" id="registerUsername" className="form-control" />
-                  <label className="form-label" htmlFor="registerUsername">
-                    Username
-                  </label>
-                </div>
-                {/* Email input */}
-                <div data-mdb-input-init="" className="form-outline mb-4">
-                  <input type="email" id="registerEmail" className="form-control" />
-                  <label className="form-label" htmlFor="registerEmail">
-                    Email
-                  </label>
-                </div>
-                {/* Password input */}
-                <div data-mdb-input-init="" className="form-outline mb-4">
-                  <input
-                    type="password"
-                    id="registerPassword"
-                    className="form-control"
-                  />
-                  <label className="form-label" htmlFor="registerPassword">
-                    Password
-                  </label>
-                </div>
-                {/* Repeat Password input */}
-                <div data-mdb-input-init="" className="form-outline mb-4">
-                  <input
-                    type="password"
-                    id="registerRepeatPassword"
-                    className="form-control"
-                  />
-                  <label className="form-label" htmlFor="registerRepeatPassword">
-                    Repeat password
-                  </label>
-                </div>
-                {/* Checkbox */}
-                <div className="form-check d-flex justify-content-center mb-4">
-                  <input
-                    className="form-check-input me-2"
-                    type="checkbox"
-                    defaultValue=""
-                    id="registerCheck"
-                    defaultChecked=""
-                    aria-describedby="registerCheckHelpText"
-                  />
-                  <label className="form-check-label" htmlFor="registerCheck">
-                    I have read and agree to the terms
-                  </label>
-                </div>
-                {/* Submit button */}
-                <button
-                  type="submit"
-                  data-mdb-button-init=""
-                  data-mdb-ripple-init=""
-                  className="btn btn-primary btn-block mb-3"
-                >
-                  Sign in
-                </button>
-              </form>
-            </div>
+        <form onChange={handleInputChange} onSubmit={handleInputSubmit}>
+          <h1 style={{color:'#BA101F'}}>Create Account</h1>
+          <div className="social-icons">
+            <a href="#" className="icon">
+              <FontAwesomeIcon icon={faUserPlus} />
+            </a>
+            <a href="#" className="icon">
+              <FontAwesomeIcon icon={faFacebookF} />
+            </a>
+            <a href="#" className="icon">
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+            <a href="#" className="icon">
+              <FontAwesomeIcon icon={faLinkedinIn} />
+            </a>
           </div>
-          {/* Pills content */}
-        </div>
+          <span>or use your email for registration</span>
+          <input type="text" name="name" placeholder="Name" />
+          <input type="email" name="email" placeholder="Email" />
+          <input type="password" name="password" placeholder="Password" />
+          <button>Sign Up</button>
+        </form>
       </div>
 
-    </>
+      <div className="form-signup-container sign-in">
+        <form onChange={handleChange} onSubmit={handleSubmit}>
+          <h1>Sign <span style={{color:"#BA101F", fontSize:"inherit"}}>in</span></h1> 
+          
+          <div className="social-icons">
+            <a href="#" className="icon">
+              <FontAwesomeIcon icon={faGooglePlusG} />
+            </a>
+            <a href="#" className="icon">
+              <FontAwesomeIcon icon={faFacebookF} />
+            </a>
+            <a href="#" className="icon">
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+            <a href="#" className="icon">
+              <FontAwesomeIcon icon={faLinkedinIn} />
+            </a>
+          </div>
+          <span>or use your email and password</span>
+          <input
+  type="email"
+  name="email"
+  placeholder="Email"
+  onChange={handleChange}
+/>
+<input
+  type="password"
+  name="password"
+  placeholder="Password"
+  onChange={handleChange}
+/>
+          <a href="#">Forget Your Password?</a>
+          <button>Sign In</button>
+        </form>
+      </div>
+
+      <div className="toggle-signup-container">
+        <div className="toggle">
+          <div className="toggle-panel toggle-left">
+            <h1 style={{color:"white"}}>Welcome Back!</h1>
+            <p>Enter your personal details to use all of site features</p>
+            <button
+              className="hidden"
+              // id="login"
+              onClick={() => setIsActive(false)}
+            >
+              Sign In
+            </button>
+          </div>
+          <div className="toggle-panel toggle-right">
+            <h1 style={{color:"white"}}>Hello, Friend!</h1>
+            <p>Register with your personal details to use all of site features</p>
+            <button
+              className="hidden"
+              id="register"
+              onClick={() => setIsActive(true)}
+            >
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+     </div>
   )
 }
 
-export default Signup
+export default Sign

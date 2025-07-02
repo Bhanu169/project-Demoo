@@ -3,10 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 function UserEdit() {
-
     const userId= useParams().id
-const navigate=useNavigate()
-      const [data,setData]=useState("")
+    const navigate=useNavigate()
+    const [data,setData]=useState("")
 
     
      const getData=async()=>{
