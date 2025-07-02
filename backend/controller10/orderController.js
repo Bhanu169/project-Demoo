@@ -1,4 +1,27 @@
 import orderr from "../model10/orderModel.js";
+import Stripe from "stripe"
+const stripe = new Stripe('sk_test_51PJVJZSGpZvoPybBYEufDLfAHcVXwiHaWRJugJpwhjZOAIZs7giMxWe6YRpiIfgZSWBMYdv4Kib76McP8bEtLQqP00HRQH2rYz');
+
+export const paymentSubmit = async (req, res) => {
+  try {
+    const { amount } = req.body;
+    if (!amount) {
+      return res.status(400).send({ error: 'Amount is required' });
+    }
+
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: Math.round(amount * 100),
+      currency: 'inr',
+      payment_method_types: ['card'],
+
+    });
+
+    res.send({ clientSecret: paymentIntent.client_secret });
+  } catch (error) {
+    console.error('Error creating PaymentIntent:', error);
+    res.status(500).send({ error: 'Internal Server Error' });
+  }
+};
 
 export const orderCreate = async (req, res) => {
   try {
@@ -28,7 +51,6 @@ export const orderCreate = async (req, res) => {
     res.status(500).json({ success: false, message: "Something went wrong" });
   }
 };
-
 export const orderGetAll = async (req, res) => {
   try {
     const data = await orderr
@@ -54,7 +76,6 @@ export const orderGetAll = async (req, res) => {
     res.status(500).json({ success: false, message: "Something went wrong" });
   }
 };
-
 export const orderGetAllForAdmin = async (req, res) => {
   try {
     const data = await orderr
@@ -107,7 +128,6 @@ export const orderGetAllForShopkeeper = async (req, res) => {
       res.status(500).json({ success: false, message: "Something went wrong" });
     }
   };
-
 export const singleOrderGet = async (req, res) => {
   try {
     const data = await orderr.findById(req.params.id);
@@ -124,7 +144,6 @@ export const singleOrderGet = async (req, res) => {
     res.status(500).json({ success: false, message: "Something went wrong" });
   }
 };
-
 export const singleOrderGetForAdmin = async (req, res) => {
   try {
     const data = await orderr
@@ -144,7 +163,6 @@ export const singleOrderGetForAdmin = async (req, res) => {
     res.status(500).json({ success: false, message: "Something went wrong" });
   }
 };
-
 export const orderDelete = async (req, res) => {
   try {
     await orderr.findByIdAndDelete(req.params.id);

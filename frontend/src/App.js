@@ -21,6 +21,8 @@ import UserEdit from './Componenets/UserEdit';
 import AdminDashboard from './Componenets/AdminDashboard';
 import Cart from './Componenets/Cart';
 import Checkout from './Componenets/Checkout';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import ProductTable from './Componenets/ProductTable';
 import ProductView from './Componenets/ProductView';
 import ProductEdit from './Componenets/ProductEdit';
@@ -32,6 +34,13 @@ import MechanicEdit from './Componenets/MechanicEdit';
 import MechanicAdd from './Componenets/MechanicAdd';
 import ScrollToTop from './Componenets/ScrollToTop';
 import { CartProvider } from './Componenets/CartProvider';
+import MyBookings from './Componenets/MyBookings';
+import MyOrder from './Componenets/MyOrder';
+
+const stripePromise = loadStripe("pk_test_51PJVJZSGpZvoPybB6Lo8vRzPKB9D4VFf2B2gbMdUeWAZsLvE1K3BAMoP15vOlYVhcSr09ZJxBtMOGt3vy6vTRdgF002QzXQMrt");
+
+// DUMMY_PAYMENT_CARD_NUMBER= 4000 0035 6000 0008
+
 function App() {
   return (
     <>
@@ -52,7 +61,17 @@ function App() {
           <Route path='/GetQuote' element={<GetQuote/>}></Route>
           <Route path='/Contact' element={<Contact/>}></Route>
           <Route path='/Cart' element={<Cart/>}></Route>
-          <Route path='/Checkout' element={<Checkout/>}></Route>
+
+
+          <Route path="/Checkout" element={
+                <Elements stripe={stripePromise}>
+                  <Checkout />
+                </Elements>
+              }
+            />
+
+
+
           <Route path='/UserTable' element={<UserTable/>}></Route>
           <Route path='/UserEdit/:id' element={<UserEdit/>}></Route>
           <Route path='/UserView/:id' element={<UserView/>}></Route>
@@ -68,11 +87,15 @@ function App() {
           <Route path='/MechanicEdit/:id' element={<MechanicEdit/>}></Route>
           <Route path='/MechanicAdd' element={<MechanicAdd/>}></Route>
           <Route path='/TeamMain' element={<TeamMain />}></Route>
+          <Route path='/MyOrder' element={<MyOrder />}></Route>
+
+
+          {/* <Route path='/MyBookings' element={<MyBookings/>}></Route> */}
         </Route>
 
       </Routes>
-      <ToastContainer/>
       </CartProvider>
+      <ToastContainer/>
     </>
   );
 }
